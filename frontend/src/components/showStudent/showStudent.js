@@ -19,10 +19,13 @@ export default function ShowStudents() {
     }
 
     useEffect(()=>{
-        axios.get('http://localhost:5000/students').then((allStudents)=>{
-            setStudentsList(allStudents.data);
-        },[])
-    })
+        
+      const getStudentData=async()=>{
+        await axios.get('http://localhost:5000/students').then(allStudents=>setStudentsList(allStudents.data))
+        console.log("hello")
+      }
+      getStudentData();
+    },[])
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
